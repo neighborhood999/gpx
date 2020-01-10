@@ -5,9 +5,10 @@ RED_COLOR = \x1b[31;01m
 BLUE_COLOR = \x1b[34;01m
 END_COLOR = \x1b[0m
 
-.PHONY: echo
-echo:
-	@echo "$(GREEN_COLOR)Hello, World!$(END_COLOR)"
+.PHONY: dep
+dep:
+	@echo "$(GREEN_COLOR)Installing dependicies...$(END_COLOR)"
+	@$(GO) mod download
 
 .PHONY: test
 test:
