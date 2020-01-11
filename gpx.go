@@ -95,7 +95,7 @@ type WayPoint struct {
 // TrackPointExtensions extend GPX by adding your own elements from another schema
 type TrackPointExtensions struct {
 	XMLName              xml.Name             `xml:"extensions"`
-	TrackPointExtensions *TrackPointExtension `xml:"TrackPointExtension"`
+	TrackPointExtensions *TrackPointExtension `xml:"TrackPointExtension,omitempty"`
 }
 
 // TrackPointExtension tracks temperature, heart rate and cadence specific to devices
