@@ -7,8 +7,9 @@ END_COLOR = \x1b[0m
 
 .PHONY: dep
 dep:
-	@echo "$(GREEN_COLOR)Installing dependicies...$(END_COLOR)"
+	@echo "$(GREEN_COLOR)Installing dependencies...$(END_COLOR)"
 	@$(GO) mod download
+	@$(GO) mod verify
 
 .PHONY: test
 test:
