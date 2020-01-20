@@ -94,6 +94,15 @@ func TestPaceInKM(t *testing.T) {
 	assert.Equal(t, &Pace{4, 49}, p)
 }
 
+func TestPaceInMile(t *testing.T) {
+	b := openGPX(testGPX)
+	gpx, _ := ReadGPX(b)
+
+	p := gpx.PaceInMile()
+
+	assert.Equal(t, &Pace{2, 59}, p)
+}
+
 func TestToRadians(t *testing.T) {
 	assert.Equal(t, math.Pi, toRadians(180))
 }
