@@ -201,6 +201,15 @@ func (g *GPX) PaceInKM() *Pace {
 	return &Pace{minutesPaceInKm, secondsPaceInKm}
 }
 
+// PaceInMile returns running pace in miles.
+func (g *GPX) PaceInMile() *Pace {
+	paceInKM := int(g.Duration() / g.Distance() / 1.609344)
+	minutesPaceInKm := int(paceInKM / 60)
+	secondsPaceInKm := paceInKM % 60
+
+	return &Pace{minutesPaceInKm, secondsPaceInKm}
+}
+
 // toRadians converts degrees to radians.
 func toRadians(degree float64) float64 {
 	return degree * math.Pi / 180.0
