@@ -106,3 +106,22 @@ func TestPaceInMile(t *testing.T) {
 func TestToRadians(t *testing.T) {
 	assert.Equal(t, math.Pi, toRadians(180))
 }
+
+func TestElevations(t *testing.T) {
+	b := openGPX(testGPX)
+	gpx, _ := ReadGPX(b)
+
+	elevations := gpx.Elevations()
+
+	assert.Len(t, elevations, 15)
+}
+
+func TestMinAndMixElevation(t *testing.T) {
+	b := openGPX(testGPX)
+	gpx, _ := ReadGPX(b)
+
+	min, max := gpx.MinAndMixElevation()
+
+	assert.Equal(t, 14.8, min)
+	assert.Equal(t, 16.0, max)
+}
