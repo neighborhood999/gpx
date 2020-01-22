@@ -210,6 +210,37 @@ func (g *GPX) PaceInMile() *Pace {
 	return &Pace{minutesPaceInKm, secondsPaceInKm}
 }
 
+// Elevations returns all the track point elevation.
+func (g *GPX) Elevations() []float64 {
+	trackPoints := g.Tracks[0].TrackSegments[0].TrackPoint
+	elevations := make([]float64, len(trackPoints))
+
+	for i := range trackPoints {
+		elevations[i] = trackPoints[i].Elevation
+	}
+
+	return elevations
+}
+
+// MinAndMixElevation returns min and mix elevation.
+func (g *GPX) MinAndMixElevation() (float64, float64) {
+	e := g.Elevations()
+	minElevation := e[0]
+	maxElevation := e[0]
+
+	for _, value := range e {
+		if value < minElevation {
+			minElevation = value
+		}
+
+		if value > maxElevation {
+			maxElevation = value
+		}
+	}
+
+	return minElevation, maxElevation
+}
+
 // toRadians converts degrees to radians.
 func toRadians(degree float64) float64 {
 	return degree * math.Pi / 180.0
