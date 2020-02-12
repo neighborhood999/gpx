@@ -125,3 +125,12 @@ func TestMinAndMixElevation(t *testing.T) {
 	assert.Equal(t, 14.8, min)
 	assert.Equal(t, 16.0, max)
 }
+
+func TestGetCoordinates(t *testing.T) {
+	b := openGPX(testGPX)
+	gpx, _ := ReadGPX(b)
+
+	coordinates := gpx.GetCoordinates()
+
+	assert.Equal(t, 15, len(coordinates))
+}
