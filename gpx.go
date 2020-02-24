@@ -241,6 +241,18 @@ func (g *GPX) MinAndMixElevation() (float64, float64) {
 	return minElevation, maxElevation
 }
 
+// GetCoordinates return all track points latitude and longitude.
+func (g *GPX) GetCoordinates() [][]float64 {
+	trackPoints := g.Tracks[0].TrackSegments[0].TrackPoint
+	coordinates := make([][]float64, len(trackPoints))
+
+	for i, track := range trackPoints {
+		coordinates[i] = []float64{track.Longitude, track.Latitude}
+	}
+
+	return coordinates
+}
+
 // toRadians converts degrees to radians.
 func toRadians(degree float64) float64 {
 	return degree * math.Pi / 180.0
