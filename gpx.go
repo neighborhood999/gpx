@@ -125,6 +125,12 @@ type Pace struct {
 	Seconds int
 }
 
+// Point is the representation a point of latitude and longitude
+type Point struct {
+	Latitude  float64
+	Longitude float64
+}
+
 // ReadGPX is a GPX reader and return a GPX object and error.
 func ReadGPX(r io.Reader) (*GPX, error) {
 	gpx := &GPX{}
@@ -242,12 +248,12 @@ func (g *GPX) MinAndMixElevation() (float64, float64) {
 }
 
 // GetCoordinates return all track points latitude and longitude.
-func (g *GPX) GetCoordinates() [][]float64 {
+func (g *GPX) GetCoordinates() []Point {
 	trackPoints := g.Tracks[0].TrackSegments[0].TrackPoint
-	coordinates := make([][]float64, len(trackPoints))
+	coordinates := make([]Point, len(trackPoints))
 
 	for i, track := range trackPoints {
-		coordinates[i] = []float64{track.Longitude, track.Latitude}
+		coordinates[i] = Point{Longitude: track.Longitude, Latitude: track.Latitude}
 	}
 
 	return coordinates
