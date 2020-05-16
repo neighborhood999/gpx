@@ -5,8 +5,8 @@ RED_COLOR = \x1b[31;01m
 BLUE_COLOR = \x1b[34;01m
 END_COLOR = \x1b[0m
 
-.PHONY: dep
-dep:
+.PHONY: install
+install:
 	@echo "$(GREEN_COLOR)Installing dependencies...$(END_COLOR)"
 	@$(GO) mod download
 	@$(GO) mod verify

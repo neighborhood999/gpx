@@ -5,7 +5,7 @@ A simple gpx parser (support Strava currently) for running and written in Go.
 ## Installation
 
 ```sh
-$ make dep
+$ make install
 ```
 
 ## Tests
